@@ -19,21 +19,6 @@ public class Axe {
 	private String axe_ar;
 	@OneToMany(mappedBy = "axe",cascade = CascadeType.ALL)
 	private Collection<Secteur> secteurs;
-	
-	@OneToMany(mappedBy = "projet",cascade = CascadeType.ALL)
-	private Collection<Projet> projet;
-	
-	public Axe(String axe, String axe_ar) {
-		super();
-		this.axe = axe;
-		this.axe_ar = axe_ar;
-	}
-	
-	public Axe() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
 	public int getId() {
 		return id;
 	}
@@ -52,6 +37,22 @@ public class Axe {
 	public void setAxe_ar(String axe_ar) {
 		this.axe_ar = axe_ar;
 	}
+	public Collection<Secteur> getSecteurs() {
+		return secteurs;
+	}
+	public void setSecteurs(Collection<Secteur> secteurs) {
+		this.secteurs = secteurs;
+	}
+	public Axe() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Axe(String axe, String axe_ar) {
+		super();
+		this.axe = axe;
+		this.axe_ar = axe_ar;
+	}
+	
 	
 	
 }

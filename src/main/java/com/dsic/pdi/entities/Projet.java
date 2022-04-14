@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 public class Projet {
 
@@ -23,6 +25,7 @@ public class Projet {
 	private String location;
 	private Long cout;
 	private int delai;
+	@JsonFormat(pattern="yyyy-MM-dd")
 	private Date dateLancement;
 	
 	@ManyToOne
@@ -34,21 +37,21 @@ public class Projet {
 	 @JoinColumn(name="maitreOuvrage_id")
 	private MaitreOuvrage maitreOuvrage;
 	@ManyToOne
-	 @JoinColumn(name="axe_id")
-	private Axe axe;
+	 @JoinColumn(name="secteur_id")
+	private Secteur secteur;
 	@ManyToOne
 	 @JoinColumn(name="commune_id")
 	private Commune commune;
 	
 	private String maitreOuvrageDélegue;
 
-	public Projet(String projet, String projet_ar, String location_ar, Long cout, int delai, Date dateLancement,
-			Statut statut, String consistence, String benificiares, MaitreOuvrage maitreOuvrage, Axe axe,
+	public Projet(String projet, String projet_ar, String location, Long cout, int delai, Date dateLancement,
+			Statut statut, String consistence, String benificiares, MaitreOuvrage maitreOuvrage, Secteur secteur,
 			Commune commune, String maitreOuvrageDélegue) {
 		super();
 		this.projet = projet;
 		this.projet_ar = projet_ar;
-		this.location = location_ar;
+		this.location = location;
 		this.cout = cout;
 		this.delai = delai;
 		this.dateLancement = dateLancement;
@@ -56,7 +59,7 @@ public class Projet {
 		this.consistence = consistence;
 		this.benificiares = benificiares;
 		this.maitreOuvrage = maitreOuvrage;
-		this.axe = axe;
+		this.secteur = secteur;
 		this.commune = commune;
 		this.maitreOuvrageDélegue = maitreOuvrageDélegue;
 	}
@@ -81,8 +84,6 @@ public class Projet {
 	public void setProjet_ar(String projet_ar) {
 		this.projet_ar = projet_ar;
 	}
-
-	
 
 	public String getLocation() {
 		return location;
@@ -148,12 +149,12 @@ public class Projet {
 		this.maitreOuvrage = maitreOuvrage;
 	}
 
-	public Axe getAxe() {
-		return axe;
+	public Secteur getSecteur() {
+		return secteur;
 	}
 
-	public void setAxe(Axe axe) {
-		this.axe = axe;
+	public void setSecteur(Secteur secteur) {
+		this.secteur = secteur;
 	}
 
 	public Commune getCommune() {
@@ -173,5 +174,6 @@ public class Projet {
 	}
 	
 	
+
 	
 }

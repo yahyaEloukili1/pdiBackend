@@ -10,18 +10,19 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
+import com.dsic.pdi.entities.Axe;
 import com.dsic.pdi.entities.Commune;
-import com.dsic.pdi.entities.MaitreOuvrage;
-
 import com.dsic.pdi.entities.Province;
+import com.dsic.pdi.entities.Secteur;
+import com.dsic.pdi.entities.Statut;
 
 @CrossOrigin(origins = "*")
 @RepositoryRestResource
-public interface MaitreOuvrageRepository extends JpaRepository<MaitreOuvrage, Integer> {
+public interface SecteurRepository extends JpaRepository<Secteur, Integer> {
 
-	@RestResource(path= "/byMaitreOuvrage")
-	public List<MaitreOuvrage> findByMaitreOuvrageContainsIgnoreCase(@Param("mc") String pr);
+	@RestResource(path= "/bySecteur")
+	public List<Axe> findBySecteurContainsIgnoreCase(@Param("mc") String pr);
 	
-	@RestResource(path= "/byMaitreOuvragePage")
-	public Page<MaitreOuvrage> findByMaitreOuvrageContainsIgnoreCase(@Param("mc") String pr,Pageable peaPageable);
+	@RestResource(path= "/bySecteurPage")
+	public Page<Axe> findBySecteurContainsIgnoreCase(@Param("mc") String pr,Pageable peaPageable);
 }
